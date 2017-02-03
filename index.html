@@ -2,26 +2,32 @@
 <html ng-app='DictApp'>
   <head>
     <meta charset="utf-8">
+    <!-- Libraries -->
     <script src="libs/jquery-3.1.0.min.js"></script>
     <script src="libs/angular.min.js"></script>
     <script src="app.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <title> VietFuji Dict </title>
   </head>
   <body ng-controller='AddController as list'>
     <div id="list" class="col-md-4 list_cnt">
       <h1> Tweet ý tưởng của bạn </h1>
       <hr>
-      Tiêu đề: <input maxlength="140" type="text" ng-model="list.itemName">
+      Từ tiếng Nhật: <input type="text" ng-model="list.itemName">
       <br>
       <br>
-      Nội dung (*Giới hạn 140 ký tự):
+      Nghĩa tiếng Việt (*Giới hạn 140 ký tự): <input type="text" ng-model="list.itemQuantity">
       <br>
-      <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea>
+      <!-- <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea> -->
       <!-- <h1 ng-if="!Tweet.content.$valid">The value is too long</h1> -->
       <br>
-      <button class="btn" ng-click="list.Abrakadabra();">Nhập thẻ</button>
+      <button class="btn" ng-click="list.Abrakadabra();">Thêm từ</button>
       <br>
       <span> {{ list.lastRemoved }} </span>
     </div>

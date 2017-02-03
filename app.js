@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 
-angular.module('MagicApp',[])
+angular.module('MagicApp',["firebase"])
 .controller('AddController', AddController)
 .service('ShoppingListService',ShoppingListService)
 .component('shoppingList',{
