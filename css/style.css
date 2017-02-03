@@ -45,7 +45,7 @@
 
 .list_cnt {
   border-right: 1px solid #00aced;
-  max-width:100%;
+  max-width:40%;
   overflow-wrap: break-word;
 }
 

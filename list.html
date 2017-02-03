@@ -1,10 +1,9 @@
-<h1> Tweet đang có </h1>
+<h1> Nghĩa tiếng Việt</h1>
 <hr>
 <ol>
   <li ng-repeat="item in $ctrl.items">
     <div class="twt_tag">
-      <h4>{{item.name}}</h4>
-      {{item.quantity}}
+      <h2>{{item.JP}}</h2>
       <button class="rm_btn" ng-click="$ctrl.onRemove({index: $index});"> Xóa </button>
     </div>
   </li>

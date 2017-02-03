@@ -1,12 +1,12 @@
 (function () {
 'use strict';
 
-angular.module('MagicApp',["firebase"])
+angular.module('DictApp',["firebase"])
 .controller('AddController', AddController)
-.service('ShoppingListService',ShoppingListService)
-.component('shoppingList',{
-  templateUrl: 'shoppinglist.html',
-  controller: ShoppingListComponentController,
+.service('listService',listService)
+.component('list',{
+  templateUrl: 'list.html',
+  controller: listComponentController,
   bindings: {
     items: '<',
     myTitle: '@title',
@@ -22,57 +22,83 @@ angular.module('MagicApp',["firebase"])
 //   return ddo;
 // }
 
-function ShoppingListComponentController(){
+AddController.$inject=['listService', '$scope', '$firebaseArray'];
+function listComponentController($scope, $firebaseArray){
   var $ctrl= this;
+  var config = {
+    apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
+    authDomain: "vfdict.firebaseapp.com",
+    databaseURL: "https://vfdict.firebaseio.com",
+    storageBucket: "vfdict.appspot.com",
+    messagingSenderId: "1051867458155"
+  };
+  firebase.initializeApp(config);
+  var ref= firebase.database().ref();
 
-  $ctrl.cookiesInList= function () {
-  for (var i=0; i<$ctrl.items.length; i++){
-    var name= $ctrl.items[i].name;
-    if (name.toLowerCase().indexOf("cookie") !== -1){
-      return true;
-    }
-  }
+  //List all the data in database into scope//
+  ref.once('value', function(snapshot) {
+  snapshot.forEach(function(childSnapshot) {
+    var childKey = childSnapshot.key;
+    var childData = childSnapshot.val();
+    console.log(childKey);
+    console.log(childData);
+  });
+  });
+  // $scope.data = $firebaseObject(database);
+  // $scope.data.$loaded()
+  // .then(function() {
+  //   console.log($scope.data);
+  // })
+  // .catch(function(err) {
+  //   console.error(err);
+  // });
+  // $ctrl.cookiesInList= function () {
+  // for (var i=0; i<$ctrl.items.length; i++){
+  //   var name= $ctrl.items[i].name;
+  //   if (name.toLowerCase().indexOf("cookie") !== -1){
+  //     return true;
+  //   }
+  // }
 
   return false;
 };
-}
 
-AddController.$inject=['ShoppingListService'];
-function AddController (ShoppingListService) {
-  //$scope.itemName="";
-  //$scope.itemQuantity="";
-  var shoppinglist=this;
+AddController.$inject=['listService'];
+function AddController (listService) {
+  //$scope.VNword="";
+  //$scope.JPword="";
+  var list=this;
 
-  shoppinglist.items=ShoppingListService.getItems();
+  list.items=listService.getItems();
   var origTitle= "";
-  shoppinglist.title= origTitle + ""+ shoppinglist.items.length + " Thẻ";
+  list.title= origTitle + ""+ list.items.length + " Thẻ";
 
-  shoppinglist.itemName="";
-  shoppinglist.itemQuantity="";
+  list.VNword="";
+  list.JPword="";
 
-  shoppinglist.Abrakadabra=function(){
-      ShoppingListService.addItem(shoppinglist.itemName,shoppinglist.itemQuantity);
-      shoppinglist.title= origTitle + ""+shoppinglist.items.length+ " Thẻ";
-      shoppinglist.itemName="";
-      shoppinglist.itemQuantity="";
+  list.Abrakadabra=function(){
+      listService.addItem(list.VNword,list.JPword);
+      list.title= origTitle + ""+list.items.length+ " Thẻ";
+      list.VNword="";
+      list.JPword="";
     }
 
-  shoppinglist.removeItem=function(itemIndex){
+  list.removeItem=function(itemIndex){
     this.lastRemoved="Đã xóa thẻ " + this.items[itemIndex].name;
-    ShoppingListService.removeItem(itemIndex);
-    this.title= origTitle + ""+shoppinglist.items.length+ " Thẻ";
+    listService.removeItem(itemIndex);
+    this.title= origTitle + ""+list.items.length+ " Thẻ";
   };
 
 }
 
-function ShoppingListService(){
+function listService(){
   var service=this;
   var items=[];
 
-  service.addItem= function(itemName, itemQuantity) {
+  service.addItem= function(VNword, JPword) {
     var item={
-      name: itemName,
-      quantity: itemQuantity
+      VN: VNword,
+      JP: JPword
     };
     items.push(item);
   };
