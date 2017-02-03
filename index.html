@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app='MagicApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title> Tweet ý tưởng của bạn!! </title>
+  </head>
+  <body ng-controller='AddController as list'>
+    <div id="list" class="col-md-4 list_cnt">
+      <h1> Tweet ý tưởng của bạn </h1>
+      <hr>
+      Tiêu đề: <input maxlength="140" type="text" ng-model="list.itemName">
+      <br>
+      <br>
+      Nội dung (*Giới hạn 140 ký tự):
+      <br>
+      <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea>
+      <!-- <h1 ng-if="!Tweet.content.$valid">The value is too long</h1> -->
+      <br>
+      <button class="btn" ng-click="list.Abrakadabra();">Nhập thẻ</button>
+      <br>
+      <span> {{ list.lastRemoved }} </span>
+    </div>
+    <div class="col-md-5 list_cnt">
+      <shopping-list
+        items="list.items"
+        title="{{list.title}}"
+        on-remove="list.removeItem(index)"></shopping-list>
+    </div>
+    <div class="col-md-3">
+      <h1> Tổng số tweet </h1>
+      <hr>
+      <div id="total" class="text-center">
+        {{list.title}}
+      </div>
+    </div>
+  </body>
+  <footer>
+    <a> Designed by Trungmaster|2017 </a>
+  </footer>
+
+</html>
