@@ -51,7 +51,7 @@ function listComponentController($scope, $firebaseArray, listService){
   // });
 
   $ctrl.items=listService.getItems();
-  // 
+  //
   // return false;
 };
 
@@ -95,7 +95,8 @@ function AddController (listService, $scope, $firebaseArray) {
 
   //** Search and Print Vietnamese by Japanese keyword **//
   list.Abrakadabra=function(){
-    ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
+    var keyword=list.JPword;
+    ref.orderByKey().equalTo(keyword).on("child_added", function(snapshot) {
       console.log(snapshot.val());
       list.VNword=snapshot.val();
       listService.addItem(list.VNword,list.JPword);
