@@ -4,7 +4,9 @@
   height: 100px;
   width:50%;
   position:relative;
-  bottom: -5px;
+  bottom: 20px;
+  margin-top:10px;
+  margin-bottom:50px;
   font-size: 2em;
   border-bottom: 5px solid #DD2C00;
   margin-left:0px;
