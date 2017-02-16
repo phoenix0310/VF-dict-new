@@ -22,20 +22,20 @@ angular.module('DictApp',["firebase"])
 //   return ddo;
 // }
 
-AddController.$inject=['listService', '$scope', '$firebaseArray'];
+// AddController.$inject=['listService', '$scope', '$firebaseArray'];
 function listComponentController($scope, $firebaseArray, listService){
   var $ctrl= this;
-  var config = {
-    apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
-    authDomain: "vfdict.firebaseapp.com",
-    databaseURL: "https://vfdict.firebaseio.com",
-    storageBucket: "vfdict.appspot.com",
-    messagingSenderId: "1051867458155"
-  };
-  firebase.initializeApp(config);
-  var ref= firebase.database().ref();
+  // var config = {
+  //   apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
+  //   authDomain: "vfdict.firebaseapp.com",
+  //   databaseURL: "https://vfdict.firebaseio.com",
+  //   storageBucket: "vfdict.appspot.com",
+  //   messagingSenderId: "1051867458155"
+  // };
+  // firebase.initializeApp(config);
+  // var ref= firebase.database().ref();
   //
-  // //List all the data in database into scope//
+  // //** List all the data in database into scope **//
   // ref.once('value', function(snapshot) {
   // snapshot.forEach(function(childSnapshot) {
   //   var childKey = childSnapshot.key;
@@ -45,16 +45,64 @@ function listComponentController($scope, $firebaseArray, listService){
   // });
   // });
 
-  //Retrieve data by key//
-  ref.orderByKey().equalTo("母").on("child_added", function(snapshot) {
-    console.log(snapshot.val());
-  });
+  //** Retrieve data by key **//
+  // ref.orderByKey().equalTo("母").on("child_added", function(snapshot) {
+  //   console.log(snapshot.val());
+  // });
 
   return false;
 };
 
-AddController.$inject=['listService'];
-function AddController (listService) {
+AddController.$inject=['listService','$scope', '$firebaseArray'];
+function AddController (listService, $scope, $firebaseArray) {
+  var config = {
+    apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
+    authDomain: "vfdict.firebaseapp.com",
+    databaseURL: "https://vfdict.firebaseio.com",
+    storageBucket: "vfdict.appspot.com",
+    messagingSenderId: "1051867458155"
+  };
+  firebase.initializeApp(config);
+  var ref= firebase.database().ref();
+
+  //** List all the data in database into scope **//
+  // ref.once('value', function(snapshot) {
+  // snapshot.forEach(function(childSnapshot) {
+  //   var childKey = childSnapshot.key;
+  //   var childData = childSnapshot.val();
+  //   console.log(childKey);
+  //   console.log(childData);
+  // });
+  // });
+
+  var list=this;
+
+  list.items=listService.getItems();
+  // var origTitle= "";
+  // list.title= origTitle + ""+ list.items.length + " Thẻ";
+
+  list.VNword="";
+  list.JPword="";
+
+  //** Search Vietnamese by Japanese keyword **//
+  // list.Abrakadabra=function(){
+  //   ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
+  //     console.log(snapshot.val());
+  //   });
+  // }
+
+  //
+  list.Abrakadabra=function(){
+    ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
+      console.log(snapshot.val());
+      list.VNword=snapshot.val();
+      listService.addItem(list.VNword,list.JPword);
+    });
+
+    list.VNword="";
+    list.JPword="";
+  }
+};
   //$scope.VNword="";
   //$scope.JPword="";
   // var config = {
@@ -66,38 +114,42 @@ function AddController (listService) {
   // };
   // firebase.initializeApp(config);
   // var ref= firebase.database().ref("vfdict");
-
-  var list=this;
-
-  list.items=listService.getItems();
-  // var origTitle= "";
-  // list.title= origTitle + ""+ list.items.length + " Thẻ";
-
-  list.VNword="";
-  list.JPword="";
-
-  list.Abrakadabra=function(){
-      listService.addItem(list.VNword,list.JPword);
-      // list.title= origTitle + ""+list.items.length+ " Thẻ";
-      // ref.once('value', function(snapshot) {
-      //   snapshot.forEach(function(childSnapshot) {
-      //     var childKey = childSnapshot.key;
-      //     var childData = childSnapshot.val();
-      //     console.log(childData);
-      //   });
+  //
+  // var list=this;
+  //
+  // list.items=listService.getItems();
+  // // var origTitle= "";
+  // // list.title= origTitle + ""+ list.items.length + " Thẻ";
+  //
+  // list.VNword="";
+  // list.JPword="";
+  //
+  // list.Abrakadabra=function(){
+  //     // list.title= origTitle + ""+list.items.length+ " Thẻ";
+  //     ref.once('value', function(snapshot) {
+  //       snapshot.forEach(function(childSnapshot) {
+  //         var childKey = childSnapshot.key;
+  //         var childData = childSnapshot.val();
+  //         console.log(childData);
+  //       });
+  //     });
+      // listService.addItem(list.VNword,list.JPword);
+      // ref.orderByKey().equalTo("母").on("child_added", function(snapshot) {
+      //   var childKey = childSnapshot.key;
+      //   var childData = childSnapshot.val();
+      //   listService.addItem(childKey,childData);
       // });
-
-      list.VNword="";
-      list.JPword="";
-    }
+      //
+      // list.VNword="";
+      // list.JPword="";
 
   // list.removeItem=function(itemIndex){
   //   this.lastRemoved="Đã xóa thẻ " + this.items[itemIndex].name;
   //   listService.removeItem(itemIndex);
   //   this.title= origTitle + ""+list.items.length+ " Thẻ";
   // };
-
-}
+//
+// };
 
 function listService(){
   var service=this;
