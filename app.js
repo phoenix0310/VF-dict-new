@@ -50,7 +50,9 @@ function listComponentController($scope, $firebaseArray, listService){
   //   console.log(snapshot.val());
   // });
 
-  return false;
+  $ctrl.items=listService.getItems();
+  // 
+  // return false;
 };
 
 AddController.$inject=['listService','$scope', '$firebaseArray'];
@@ -91,7 +93,7 @@ function AddController (listService, $scope, $firebaseArray) {
   //   });
   // }
 
-  //
+  //** Search and Print Vietnamese by Japanese keyword **//
   list.Abrakadabra=function(){
     ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
       console.log(snapshot.val());
@@ -103,53 +105,6 @@ function AddController (listService, $scope, $firebaseArray) {
     list.JPword="";
   }
 };
-  //$scope.VNword="";
-  //$scope.JPword="";
-  // var config = {
-  //   apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
-  //   authDomain: "vfdict.firebaseapp.com",
-  //   databaseURL: "https://vfdict.firebaseio.com",
-  //   storageBucket: "vfdict.appspot.com",
-  //   messagingSenderId: "1051867458155"
-  // };
-  // firebase.initializeApp(config);
-  // var ref= firebase.database().ref("vfdict");
-  //
-  // var list=this;
-  //
-  // list.items=listService.getItems();
-  // // var origTitle= "";
-  // // list.title= origTitle + ""+ list.items.length + " Thẻ";
-  //
-  // list.VNword="";
-  // list.JPword="";
-  //
-  // list.Abrakadabra=function(){
-  //     // list.title= origTitle + ""+list.items.length+ " Thẻ";
-  //     ref.once('value', function(snapshot) {
-  //       snapshot.forEach(function(childSnapshot) {
-  //         var childKey = childSnapshot.key;
-  //         var childData = childSnapshot.val();
-  //         console.log(childData);
-  //       });
-  //     });
-      // listService.addItem(list.VNword,list.JPword);
-      // ref.orderByKey().equalTo("母").on("child_added", function(snapshot) {
-      //   var childKey = childSnapshot.key;
-      //   var childData = childSnapshot.val();
-      //   listService.addItem(childKey,childData);
-      // });
-      //
-      // list.VNword="";
-      // list.JPword="";
-
-  // list.removeItem=function(itemIndex){
-  //   this.lastRemoved="Đã xóa thẻ " + this.items[itemIndex].name;
-  //   listService.removeItem(itemIndex);
-  //   this.title= origTitle + ""+list.items.length+ " Thẻ";
-  // };
-//
-// };
 
 function listService(){
   var service=this;
