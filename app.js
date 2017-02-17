@@ -18,8 +18,8 @@ angular.module('DictApp',["firebase"])
 function listComponentController($scope, $firebaseArray, listService){
   var $ctrl= this;
   $ctrl.items=listService.getItems();
-  $ctrl.onRemove=function(itemIndex){
-    listService.removeItem(itemIndex);
+  $ctrl.remove=function(myIndex){
+    listService.removeItem(myIndex);
   }
   //
   // return false;
@@ -50,14 +50,19 @@ function AddController(listService, $scope, $firebaseArray) {
   list.userName="";
   list.password="";
   list.authStatus="Chưa đăng nhập";
+  var authStatus_ok='#B2FF59';
+  var authStatus_no='#FF6E40';
+
+  list.authColor=authStatus_no;
+
   //** Search Vietnamese by Japanese keyword **//
   // list.Abrakadabra=function(){
   //   ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
   //     console.log(snapshot.val());
   //   });
   // }
-  //** Search and Print Vietnamese by Japanese keyword **//
 
+  //** Search and Print Vietnamese by Japanese keyword **//
   list.GetWord=function(object){
     console.log('Đang xử lý');
     ref.orderByKey()
@@ -92,6 +97,7 @@ function AddController(listService, $scope, $firebaseArray) {
       var errorMessage = error.message;
       console.log('Error !!')
       list.authStatus="Đăng nhập thất bại";
+      list.authColor=authStatus_no;
       // ...
     });
 
@@ -100,7 +106,8 @@ function AddController(listService, $scope, $firebaseArray) {
     //-->Require when many user want to add key in the same time//
 
     ref.child(key).set(val);
-    list.authStatus="Đăng nhập thành công";
+    list.authStatus="Đăng nhập thành công/ Đã thêm";
+    list.authColor=authStatus_ok;
     console.log('Đã thêm');
     // ref.orderByKey().equalTo(list.JPword).on('child_added', function(snapshot) {
     //   console.log(snapshot.val());

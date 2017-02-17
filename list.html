@@ -3,8 +3,8 @@
 <ol>
   <li ng-repeat="item in $ctrl.items">
     <div class="twt_tag">
-      <span>{{item.JP}}</span> tức là <b>{{item.VN}}</b>
-      <button class="rm_btn" ng-click="$ctrl.onRemove({index: $index});"> Xóa </button>
+      <span>{{item.JP}}</span> : <b>{{item.VN}}</b>
+      <button class="rm_btn" ng-click="$ctrl.remove($index);"> <span class="glyphicon glyphicon-remove"></span> </button>
     </div>
   </li>
 </ol>
