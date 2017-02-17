@@ -4,11 +4,12 @@
   height: 100px;
   width:50%;
   position:relative;
+  float:right;
   bottom: 20px;
-  margin-top:10px;
+  margin-top:50px;
   margin-bottom:50px;
-  font-size: 2em;
-  border-bottom: 5px solid #DD2C00;
+  font-size: 1.2em;
+  border-bottom: 10px solid #01579B;
   margin-left:0px;
   box-shadow: 5px 5px 5px #CCCCCC;
 
@@ -19,15 +20,19 @@
 }
 
 .btn:hover {
-  background-color: #DD2C00;
+  background-color: #FFCA28;
+  border-bottom: none;
 }
 
 .rm_btn{
   border-color: transparent;
   color: #FFFFFF;
+  background-color: #FF6E40;
   width:auto;
   margin-bottom: 2px;
+  margin-left:10px;
   font-size: 1em;
+  border-bottom: 2px solid #BF360C;
 }
 
 
@@ -43,6 +48,7 @@
   width:100%;
   height:50px;
   font-size:2em;
+  margin-top:30px;
   border: 1px solid #FFFFFF;
   border-bottom: 1px solid #00aced;
 }
@@ -59,6 +65,9 @@
 .list_cnt {
   /*border-bottom: 5px solid #00aced;*/
   overflow-wrap: break-word;
+  position:relative;
+  padding:10px;
+  min-height:400px;
 }
 
 .twt_tag{
@@ -69,7 +78,8 @@
   margin-bottom:10px;
   box-shadow: 2px 5px 5px #CCCCCC;
   max-width:100%;
-  padding:5px;
+  padding:10px;
+  font-size:1.2em;
   overflow-wrap: break-word;
 }
 
@@ -79,6 +89,10 @@
   margin-top:10px;
   margin-bottom:10px;
   border-radius: 10px;
+}
+
+.login p{
+  color:#BF360C;
 }
 
 footer{
@@ -99,4 +113,11 @@ footer a {
   float: right;
   margin-right: 50px;
   margin-top: 15px;
+}
+
+@media (max-width:768px) {
+  #list_display{
+    position:relative;
+    float:none;
+  }
 }

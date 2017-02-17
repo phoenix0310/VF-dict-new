@@ -14,15 +14,15 @@ angular.module('DictApp',["firebase"])
   }
 });
 
-//** SETTINGS UP FIREBASE **/
-var config = {
-  apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
-  authDomain: "vfdict.firebaseapp.com",
-  databaseURL: "https://vfdict.firebaseio.com/",
-  storageBucket: "vfdict.appspot.com",
-  messagingSenderId: "1051867458155"
-};
-firebase.initializeApp(config);
+// //** SETTINGS UP FIREBASE **/
+// var config = {
+//   apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
+//   authDomain: "vfdict.firebaseapp.com",
+//   databaseURL: "https://vfdict.firebaseio.com/",
+//   storageBucket: "vfdict.appspot.com",
+//   messagingSenderId: "1051867458155"
+// };
+// firebase.initializeApp(config);
 
 
 // listComponentController.$inject=['listService', '$scope', '$firebaseArray'];
@@ -98,24 +98,20 @@ function AddController(listService, $scope, $firebaseArray) {
     console.log('Đang xử lý');
     ref.orderByKey()
     .equalTo(object)
-    .once('child_added')
-    .then(function(snapshot) {
-      console.log(snapshot.val());
+    .once('value',function(snapshot) {
+      /*Check if the key exists */
       if (snapshot.val()){
-        list.VNword=snapshot.val();
-        console.log(list.VNword);
+          list.VNword=snapshot.child(object).val();
+          console.log(list.VNword);
+          console.log('Đã xong!');
+        } else {
+          list.VNword="Chưa có! Hãy bổ sung";
+          console.log('Không có trong database');
+        };
         listService.addItem(list.VNword,object);
-        console.log('Đã xong');
-      } else {
-        list.VNword="Chưa có";
-      };
-      $scope.$digest();
-    });
+        $scope.$digest();
+      });
   };
-
-  // $scope.$watch('VNword', function(){
-  //   list.items=listService.getItems();
-  // });
 
 
   //** Add new Vietnamese to Japanese keyword **//
@@ -140,6 +136,7 @@ function AddController(listService, $scope, $firebaseArray) {
     //-->Require when many user want to add key in the same time//
 
     ref.child(key).set(val);
+    list.authStatus="Đăng nhập thành công";
     console.log('Đã thêm');
     // ref.orderByKey().equalTo(list.JPword).on('child_added', function(snapshot) {
     //   console.log(snapshot.val());
