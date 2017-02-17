@@ -67,7 +67,19 @@
 
 #list_search span{
   font-size:2em;
+  height:auto;
+  padding:10px;
+  position:absolute;
+  top:42%;
   margin-right:0px;
+  background-color:#00aced;
+  color: #FFFFFF;
+  border-bottom: 3px solid #01579B;
+}
+
+#list_search span:hover{
+  background-color: #FFCA28;
+  border-bottom: none;
 }
 
 #list_add {
