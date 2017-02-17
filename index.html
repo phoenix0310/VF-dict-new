@@ -39,19 +39,12 @@
 
   <body ng-app='DictApp' ng-controller='AddController as list'>
     <div class="container-fluid row">
-      <div id="list_search" class="col col-md-3 col-sm-12  list_cnt ">
+      <div id="list_search" class="col col-md-3 col-sm-12 list_cnt">
         <h1 class="text-center"> Tra từ </h1>
         <hr>
         <p>Từ tiếng Nhật:</p>
         <input type="text" class="text-center" ng-model="list.JPword">
         <span class="glyphicon glyphicon-menu-right" ng-click="list.GetWord(list.JPword);"　aria-hidden="true"></span>
-        <br>
-        <!-- <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea> -->
-        <!-- <h1 ng-if="!Tweet.content.$valid">The value is too long</h1> -->
-        <br>
-        <!-- <button class="btn" ng-click="list.GetWord(list.JPword);">
-          <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button> -->
         <br>
       </div>
 

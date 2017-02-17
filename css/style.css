@@ -162,3 +162,29 @@ footer a {
     float:none;
   }
 }
+
+@media (max-width:768px) {
+  #list_display{
+    position:relative;
+    float:none;
+  }
+
+  .search {
+    position:fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+  }
+
+  #list_search{
+    min-height:0px;
+  }
+
+  #list_search input{
+    margin-top:0px;
+  }
+
+  #list_search span{
+    top:70%;
+  }
+}

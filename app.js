@@ -129,7 +129,9 @@ function listService(){
       VN: VNword,
       JP: JPword
     };
-    items.push(item);
+
+    //* Keep new item always ontop *// 
+    items.unshift(item);
   };
 
   service.getItems= function(){
