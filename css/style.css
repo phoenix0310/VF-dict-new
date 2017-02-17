@@ -45,10 +45,9 @@
   font-size:2em;
 }
 
-/*#list_add input{
+#list_add input{
   width:100%;
-  height:100px;
-}*/
+}
 
 .list_cnt {
   border-right: 1px solid #00aced;
@@ -82,6 +81,6 @@ footer{
 footer a {
   position:relative;
   float: right;
-  margin-right: 135px;
+  margin-right: 50px;
   margin-top: 15px;
 }
