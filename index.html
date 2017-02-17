@@ -30,7 +30,7 @@
           </div> -->
           <div id="About" class="col-sm-12 col-xs-12 col-xxs-12 text-left">
             <h2><span class="glyphicon glyphicon-tags"></span> VFDICT-BETA <a href="http://www.vietfuji.com/home/" >&copy; VietFuji Group</a></h2>
-            <h5>Từ điển thuật ngữ chuyên ngành Nhật-Việt</h5>
+            <h5>Từ điển thuật ngữ chuyên ngành Nhật Việt</h5>
           </div>
         </div>
       </div><!-- .container -->
@@ -76,12 +76,12 @@
           User-name: <input type="text" ng-model="list.userName">
           <br>
           <br>
-          Passwords: <input type="text" ng-model="list.password">
+          Passwords: <input type="password" ng-model="list.password">
           <br>
         </div>
         <!-- <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea> -->
         <!-- <h1 ng-if="!Tweet.content.$valid">The value is too long</h1> -->
-        Trạng thái: <span ng-style="{'background-color': list.authColor}">{{list.authStatus}}</span>
+        Trạng thái: <span ng-style="{'background-color': list.authColor, 'padding':'5px'}">{{list.authStatus}}</span>
         <button class="btn" ng-click="list.AddWord();">
           THÊM | SỬA
           <span class="glyphicon glyphicon-pencil"></span>

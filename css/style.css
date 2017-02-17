@@ -92,6 +92,10 @@
   width:100%;
 }
 
+#list_display{
+  overflow-y: scroll;
+}
+
 .list_cnt {
   /*border-bottom: 5px solid #00aced;*/
   overflow-wrap: break-word;
@@ -100,7 +104,6 @@
   min-height:400px;
   top:-18px;
   max-height:650px;
-  overflow-y: scroll;
 }
 
 .twt_tag{
