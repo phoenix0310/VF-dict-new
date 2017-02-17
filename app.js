@@ -85,7 +85,7 @@ function AddController(listService, $scope, $firebaseArray) {
   list.JPword="";
   list.userName="";
   list.password="";
-
+  list.authStatus="Chưa đăng nhập";
   //** Search Vietnamese by Japanese keyword **//
   // list.Abrakadabra=function(){
   //   ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
@@ -96,12 +96,19 @@ function AddController(listService, $scope, $firebaseArray) {
 
   list.GetWord=function(object){
     console.log('Đang xử lý');
-    ref.orderByKey().equalTo(object).on('child_added', function(snapshot) {
+    ref.orderByKey()
+    .equalTo(object)
+    .once('child_added')
+    .then(function(snapshot) {
       console.log(snapshot.val());
-      list.VNword=snapshot.val();
-      console.log(list.VNword);
-      listService.addItem(list.VNword,object);
-      console.log('Đã xong');
+      if (snapshot.val()){
+        list.VNword=snapshot.val();
+        console.log(list.VNword);
+        listService.addItem(list.VNword,object);
+        console.log('Đã xong');
+      } else {
+        list.VNword="Chưa có";
+      };
       $scope.$digest();
     });
   };
@@ -124,6 +131,7 @@ function AddController(listService, $scope, $firebaseArray) {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log('Error !!')
+      list.authStatus="Đăng nhập thất bại";
       // ...
     });
 

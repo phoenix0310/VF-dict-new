@@ -48,16 +48,20 @@
         <br>
         Nghĩa tiếng Việt: <input type="text" ng-model="list.VNword">
         <br>
-        <br>
-        User-name: <input type="text" ng-model="list.userName">
-        <br>
-        <br>
-        Passwords: <input type="text" ng-model="list.password">
-        <br>
+        <div class="login">
+          <h4>Đăng nhập</h4>
+          <p> *Cần tài khoản để thêm bớt, chỉnh sửa từ điển </p>
+          User-name: <input type="text" ng-model="list.userName">
+          <br>
+          <br>
+          Passwords: <input type="text" ng-model="list.password">
+          <br>
+        </div>
         <!-- <textarea maxlength="140" name="content" type="text" ng-model="list.itemQuantity"></textarea> -->
         <!-- <h1 ng-if="!Tweet.content.$valid">The value is too long</h1> -->
         <br>
         <button class="btn" ng-click="list.AddWord();">THÊM/SỬA TỪ</button>
+        <span>{{list.authStatus}}</span>
         <br>
       </div>
       <!-- <div class="col-md-3">
