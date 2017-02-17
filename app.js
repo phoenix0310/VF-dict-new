@@ -62,7 +62,7 @@ function listComponentController($scope, $firebaseArray, listService){
 };
 
 AddController.$inject=['listService','$scope', '$firebaseArray'];
-function AddController (listService, $scope, $firebaseArray) {
+function AddController(listService, $scope, $firebaseArray) {
   var ref= firebase.database().ref('vfdict1');
 
   //** List all the data in database into scope **//
@@ -77,7 +77,7 @@ function AddController (listService, $scope, $firebaseArray) {
 
   var list=this;
 
-  list.items=listService.getItems();
+  // list.items=listService.getItems();
   // var origTitle= "";
   // list.title= origTitle + ""+ list.items.length + " Thẻ";
 
@@ -94,15 +94,15 @@ function AddController (listService, $scope, $firebaseArray) {
   // }
   //** Search and Print Vietnamese by Japanese keyword **//
 
-  list.GetWord=function(){
-    var temp="";
+  list.GetWord=function(object){
     console.log('Đang xử lý');
-    ref.orderByKey().equalTo(list.JPword).on('child_added', function(snapshot) {
+    ref.orderByKey().equalTo(object).on('child_added', function(snapshot) {
       console.log(snapshot.val());
-      temp=snapshot.val();
+      list.VNword=snapshot.val();
       console.log(list.VNword);
-      // listService.addItem(list.VNword,list.JPword);
+      listService.addItem(list.VNword,object);
       console.log('Đã xong');
+      $scope.$digest();
     });
   };
 

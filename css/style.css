@@ -14,6 +14,10 @@
 
 }
 
+.btn span{
+  font-size:2em;
+}
+
 .btn:hover {
   background-color: #DD2C00;
 }
@@ -22,7 +26,6 @@
   border-color: transparent;
   color: #FFFFFF;
   width:auto;
-  position:relative;
   margin-bottom: 2px;
   font-size: 1em;
 }
@@ -36,18 +39,19 @@
   font-size: 3em;
 }
 
-#list input{
+#list_search input{
   width:100%;
+  height:50px;
+  font-size:2em;
 }
 
-#list textarea{
+/*#list_add input{
   width:100%;
   height:100px;
-}
+}*/
 
 .list_cnt {
   border-right: 1px solid #00aced;
-  max-width:40%;
   overflow-wrap: break-word;
 }
 
@@ -63,14 +67,14 @@
   overflow-wrap: break-word;
 }
 footer{
-  position:fixed;
+  position:relative;
   background-color: #CCCCCC;
   height:50px;
   color: #FFFFFF;
   border-color:transparent;
   margin-top: 15px;
   margin-bottom:0px;
-  bottom:0px;
+  bottom:-50px;
   left:0px;
   right:0px;
 }
