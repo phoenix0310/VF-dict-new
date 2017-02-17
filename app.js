@@ -17,31 +17,6 @@ angular.module('DictApp',["firebase"])
 // listComponentController.$inject=['listService', '$scope', '$firebaseArray'];
 function listComponentController($scope, $firebaseArray, listService){
   var $ctrl= this;
-  // var config = {
-  //   apiKey: "AIzaSyCC_PMzSnYuou0u_nuuYTt_H27XEMhru4w",
-  //   authDomain: "vfdict.firebaseapp.com",
-  //   databaseURL: "https://vfdict.firebaseio.com",
-  //   storageBucket: "vfdict.appspot.com",
-  //   messagingSenderId: "1051867458155"
-  // };
-  // firebase.initializeApp(config);
-  // var ref= firebase.database().ref();
-  //
-  // //** List all the data in database into scope **//
-  // ref.once('value', function(snapshot) {
-  // snapshot.forEach(function(childSnapshot) {
-  //   var childKey = childSnapshot.key;
-  //   var childData = childSnapshot.val();
-  //   console.log(childKey);
-  //   console.log(childData);
-  // });
-  // });
-
-  //** Retrieve data by key **//
-  // ref.orderByKey().equalTo("母").on("child_added", function(snapshot) {
-  //   console.log(snapshot.val());
-  // });
-
   $ctrl.items=listService.getItems();
   $ctrl.onRemove=function(itemIndex){
     listService.removeItem(itemIndex);
