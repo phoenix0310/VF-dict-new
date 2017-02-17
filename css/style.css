@@ -56,6 +56,11 @@
   font-size: 3em;
 }
 
+#search {
+  padding-right: 35px;
+  padding-left: 0px;
+}
+
 #list_search input{
   width:85%;
   height:50px;
