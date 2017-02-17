@@ -43,9 +43,10 @@
         <h1 class="text-center"> Tra từ </h1>
         <hr>
         <p>Từ tiếng Nhật:</p>
-        <input type="text" class="text-center" ng-model="list.JPword">
-        <span class="glyphicon glyphicon-menu-right" ng-click="list.GetWord(list.JPword);"　aria-hidden="true"></span>
-        <br>
+        <div class="container-fluid text-center">
+          <input type="text" class="text-center" ng-model="list.JPword">
+          <span class="glyphicon glyphicon-menu-right" ng-click="list.GetWord(list.JPword);"　aria-hidden="true"></span>
+        </div>
       </div>
 
       <div id="list_display" class="col col-md-5 col-sm-12 list_cnt ">
