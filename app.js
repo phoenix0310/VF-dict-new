@@ -21,8 +21,6 @@ function listComponentController($scope, $firebaseArray, listService){
   $ctrl.remove=function(myIndex){
     listService.removeItem(myIndex);
   }
-  //
-  // return false;
 };
 
 AddController.$inject=['listService','$scope', '$firebaseArray'];
@@ -54,13 +52,6 @@ function AddController(listService, $scope, $firebaseArray) {
   var authStatus_no='#FF6E40';
 
   list.authColor=authStatus_no;
-
-  //** Search Vietnamese by Japanese keyword **//
-  // list.Abrakadabra=function(){
-  //   ref.orderByKey().equalTo(list.JPword).on("child_added", function(snapshot) {
-  //     console.log(snapshot.val());
-  //   });
-  // }
 
   //** Search and Print Vietnamese by Japanese keyword **//
   list.GetWord=function(object){
@@ -130,7 +121,7 @@ function listService(){
       JP: JPword
     };
 
-    //* Keep new item always ontop *// 
+    //* Keep new item always ontop *//
     items.unshift(item);
   };
 
