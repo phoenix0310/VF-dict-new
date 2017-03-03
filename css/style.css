@@ -88,9 +88,9 @@
 }
 
 #list_add {
-  background-color:#E0E0E0;
+  background-color:#EEEEEE;
   height:100%;
-  border-left: 1px solid #cccccc;
+  border-left: 2px solid #cccccc;
 }
 
 #list_add input{
