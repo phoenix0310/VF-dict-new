@@ -8,6 +8,7 @@ angular.module('DictApp',["firebase"])
   templateUrl: 'list.html',
   controller: listComponentController,
   bindings: {
+    trans:'=',
     items: '<',
     myTitle: '@title',
     onRemove: '&'
@@ -23,8 +24,8 @@ function listComponentController($scope, $firebaseArray, listService){
   }
 };
 
-AddController.$inject=['listService','$scope', '$firebaseArray'];
-function AddController(listService, $scope, $firebaseArray) {
+AddController.$inject=['listService','$scope', '$firebaseArray', '$http'];
+function AddController(listService, $scope, $firebaseArray, $http) {
   var ref= firebase.database().ref('vfdict1');
 
   //** List all the data in database into scope **//
@@ -45,17 +46,28 @@ function AddController(listService, $scope, $firebaseArray) {
 
   list.VNword="";
   list.JPword="";
+  list.JPwordTrans="";
   list.userName="";
   list.password="";
   list.authStatus="Chưa đăng nhập";
   var authStatus_ok='#B2FF59';
   var authStatus_no='#FF6E40';
+  var APIpath='http://www.transltr.org/api/translate?text=';
 
   list.authColor=authStatus_no;
 
   //** Search and Print Vietnamese by Japanese keyword **//
   list.GetWord=function(object){
+    var requestUrl=APIpath+object.toString()+'&to=vi&from=ja';
     console.log('Đang xử lý');
+    $http.get(requestUrl)
+      .success(function(data,status){
+        list.JPwordTrans=data.translationText;
+      })
+      .error(function(data,status){
+        console.log("Error");
+      })
+
     ref.orderByKey()
     .equalTo(object)
     .once('value',function(snapshot) {
@@ -86,7 +98,7 @@ function AddController(listService, $scope, $firebaseArray) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      console.log('Error !!')
+      alert("Error !! Sai username hoặc password" )
       list.authStatus="Đăng nhập thất bại";
       list.authColor=authStatus_no;
       // ...
@@ -99,7 +111,7 @@ function AddController(listService, $scope, $firebaseArray) {
     ref.child(key).set(val);
     list.authStatus="Đăng nhập thành công/ Đã thêm";
     list.authColor=authStatus_ok;
-    console.log('Đã thêm');
+    alert("Đã thêm từ mới! Xin cám ơn.");
     // ref.orderByKey().equalTo(list.JPword).on('child_added', function(snapshot) {
     //   console.log(snapshot.val());
     //   // list.VNword=snapshot.val();
