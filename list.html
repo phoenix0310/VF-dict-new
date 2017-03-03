@@ -1,14 +1,12 @@
 <h1 class="text-center"> Nghĩa Việt</h1>
 <hr>
+<p class="text-center">Tham khảo từ Transltr: {{$ctrl.trans}}<p>
+<hr>
 <ol>
   <li ng-repeat="item in $ctrl.items">
     <div class="twt_tag">
       <span>{{item.JP}}</span> : <b>{{item.VN}}</b>
       <button class="rm_btn" ng-click="$ctrl.remove($index);"> <span class="glyphicon glyphicon-remove"></span> </button>
-    </div>
-    <div>
-      <hr>
-      <p> Nghĩa tham khảo từ Transltr: {{$ctrl.trans}}<p>
     </div>
   </li>
 </ol>
