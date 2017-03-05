@@ -1,29 +1,46 @@
+h1 {
+border-radius: 3px;
+background-color: #3ea9a1;
+color: #FFFFFF;
+width: auto;
+margin: -11px;
+height: 57px;
+display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+h2{
+  font-size: 43px;
+}
+
+
 .navbar{
-  background-color: #00aced;
+  background-color: #3ea9a1;
   box-shadow: 2px 2px 5px #999999;
   color:#FFFFFF;
   border-radius: none;
 }
 
 .btn {
-  background-color:#00aced;
+  background-color:#3ea9a1;
   color: #FFFFFF;
-  height: 100px;
+  height: 43px;
   width:50%;
   position:relative;
   float:right;
-  bottom: 0px;
+  bottom: -16px;
   margin-top:20px;
   margin-bottom:20px;
   font-size: 1.2em;
-  border-bottom: 10px solid #01579B;
+
   margin-left:0px;
-  box-shadow: 5px 5px 5px #CCCCCC;
+
 
 }
 
 .btn span{
-  font-size:2em;
+  font-size:1.0em;
 }
 
 .btn:hover {
@@ -35,7 +52,6 @@
   border-color: transparent;
   color: #FFFFFF;
   background-color: #FF6E40;
-  width:auto;
   float: right;
   /* right: 20px; */
   position: relative;
@@ -63,11 +79,11 @@
 
 #list_search input{
   width:85%;
-  height:50px;
+  height:48px;
   font-size:2em;
-  margin-top:30px;
-  border: 1px solid #FFFFFF;
-  border-bottom: 1px solid #00aced;
+  margin-top:31px;
+  border: 1px solid #00aced;
+
 }
 
 #list_search span{
@@ -75,11 +91,11 @@
   height:auto;
   padding:10px;
   position:absolute;
-  top:42.5%;
+  top:26%;
   margin-right:0px;
-  background-color:#00aced;
+  background-color:#3ea9a1;
   color: #FFFFFF;
-  border-bottom: 3px solid #01579B;
+
 }
 
 #list_search span:hover{
@@ -90,7 +106,13 @@
 #list_add {
   background-color:#EEEEEE;
   height:100%;
+<<<<<<< Updated upstream
   border-left: 2px solid #cccccc;
+=======
+  border-left: 1px solid #cccccc;
+
+  border-radius:5px;
+>>>>>>> Stashed changes
 }
 
 #list_add input{
@@ -107,13 +129,16 @@
 }
 
 .list_cnt {
-  /*border-bottom: 5px solid #00aced;*/
+  /*border-bottom: 5px solid #00aced;568px*/
   overflow-wrap: break-word;
   position:relative;
   padding:10px;
   min-height:400px;
-  top:-18px;
+  top:-14px;
   max-height:650px;
+  border: 2px solid #CCCCCC;
+  height: 566px;
+  border-radius:5px;
 }
 
 .twt_tag{
@@ -132,9 +157,12 @@
 .login{
   border:1px solid #FFFFFF;
   padding:10px;
+  padding-top:0px;
+  padding-bottom: 18px;
   margin-top:10px;
   margin-bottom:10px;
   border-radius: 10px;
+
 }
 
 .login p{

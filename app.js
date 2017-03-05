@@ -69,8 +69,8 @@ function AddController(listService, $scope, $firebaseArray, $http) {
       })
 
     ref.orderByKey()
-    .equalTo(object)
-    .once('value',function(snapshot) {
+    .startAt(object)
+    .on('value',function(snapshot) {
       /*Check if the key exists */
       if (snapshot.val()){
           list.VNword=snapshot.child(object).val();
@@ -109,7 +109,7 @@ function AddController(listService, $scope, $firebaseArray, $http) {
     //-->Require when many user want to add key in the same time//
 
     ref.child(key).set(val);
-    list.authStatus="Đăng nhập thành công/ Đã thêm";
+    list.authStatus="Đăng nhập thành công";
     list.authColor=authStatus_ok;
     alert("Đã thêm từ mới! Xin cám ơn.");
     // ref.orderByKey().equalTo(list.JPword).on('child_added', function(snapshot) {
