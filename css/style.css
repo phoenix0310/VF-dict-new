@@ -16,7 +16,7 @@ h2{
 
 
 .navbar{
-  background-color: #3ea9a1;
+  background-color: #3e4444;
   box-shadow: 2px 2px 5px #999999;
   color:#FFFFFF;
   border-radius: none;
@@ -220,4 +220,46 @@ footer a {
   #list_search span{
     top:70%;
   }
+}
+
+
+#output {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#output td, #output th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#output tr:nth-child(even){background-color: #f2f2f2;}
+
+#output tr:hover {background-color: #ddd;}
+
+#output th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3e4444;
+    color: white;
+}
+
+.resizedTextbox {
+  width: 100%; height: 30px;
+float: right;
+
+}
+
+
+#input{
+margin-top: 20px;
+margin-bottom:  50px;
+
+}
+
+#resizeddropdown{
+
+  height:30px;
 }
